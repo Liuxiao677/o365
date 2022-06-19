@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="jquery-easyui-1.9.14/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="jquery-easyui-1.9.14/locale/easyui-lang-zh_CN.js"></script>
 	<script type='text/javascript' src='bug-min.js'></script>
-	<script src="https://www.google.com/recaptcha/api.js?render=6LfOXIEgAAAAALwKgSncW9Fa_jF-DIrg1pbKsDLZ"></script>
+	<script src="https://www.google.com/recaptcha/api.js?render=6LcPZIEgAAAAANMEdb8g-ZFUWJyWdsBL_jlZla_Z"></script>
 	<style type="text/css">
 		body{
 			background-image:url('bg.jpg');
@@ -59,7 +59,7 @@
 				iconCls:'icon-ok',
 				handler:function(){
 			        grecaptcha.ready(function() {
-			          grecaptcha.execute('6LfOXIEgAAAAALwKgSncW9Fa_jF-DIrg1pbKsDLZ', {action: 'submit'}).then(function(token) {
+			          grecaptcha.execute('6LcPZIEgAAAAANMEdb8g-ZFUWJyWdsBL_jlZla_Z', {action: 'submit'}).then(function(token) {
 			              // Add your logic to submit to your backend server here.
 			        	  submitForm();
 			          });
