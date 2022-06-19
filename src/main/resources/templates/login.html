@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="jquery-easyui-1.9.14/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="jquery-easyui-1.9.14/locale/easyui-lang-zh_CN.js"></script>
 	<script type='text/javascript' src='bug-min.js'></script>
+	<script src="https://www.google.com/recaptcha/api.js?render=6LfOXIEgAAAAALwKgSncW9Fa_jF-DIrg1pbKsDLZ"></script>
 	<style type="text/css">
 		body{
 			background-image:url('bg.jpg');
@@ -33,7 +34,7 @@
 </head>
 <body>
 	<div id="dlg" class="easyui-dialog" title="登录O365管理系统" style="width: 320px; height: 270px; padding: 10px">
-		<form id="ff" method="post" action="/login" >
+		<form id="ff" method="post" action="/login">
 			<div style="margin-bottom:18px">
 				<b>用户:</b><input id="username" name="username" style="width:100%" onblur="checkUserId()" /><div id="useridtip" style="font-size: 10px"><font color="gray">请输入用户名</font></div>
 			</div>
@@ -45,6 +46,7 @@
 	</div>
 	
 	<script>
+	
 		new BugController({'minBugs':1, 'maxBugs':1, 'mouseOver':'fly'});
 		$('#dlg').dialog({
 		    cache: false,
@@ -56,7 +58,12 @@
 				text:'登录',
 				iconCls:'icon-ok',
 				handler:function(){
-					submitForm();
+			        grecaptcha.ready(function() {
+			          grecaptcha.execute('6LfOXIEgAAAAALwKgSncW9Fa_jF-DIrg1pbKsDLZ', {action: 'submit'}).then(function(token) {
+			              // Add your logic to submit to your backend server here.
+			        	  submitForm();
+			          });
+			        });
 				}
 			},{
 				text:'重置',
@@ -68,6 +75,8 @@
 	
 		function submitForm(){
 			if(checkUserId()&&checkPwd()){
+				
+				
 				$('#ff').submit();
 			}
 		}
